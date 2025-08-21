@@ -1,0 +1,57 @@
+[project]
+name = "modern_dcf"
+version = "0.1.0"
+description = "This is a rewrite of the Python package pydcf by Damien Robertson with some speed-up to the computation and implimentation of the Gaussian kernel dcf which previously only was used to select a filter size for the sloted dcf function. It is intended to be used within scripts and in Jupyter notebooks, and is not a command line script. This is compatible with Python 3.12."
+readme = "README.md"
+authors = [
+  {name = "Henry Best", email = "hbest@gradcenter.cuny.edu"}
+]
+maintainers = [
+  {name = "Henry Best", email = "hbest@gradcenter.cuny.edu"}
+]
+classifiers = [
+    # TODO
+]
+license = {text = "MIT"}
+dependencies = [
+  "typer"
+]
+requires-python = ">= 3.10"
+
+[project.optional-dependencies]
+test = [
+    "coverage",  # testing
+    "pytest",  # testing
+    "ruff",  # linting
+    "ty", # checking types
+    "ipdb", # debugging
+]
+
+[project.urls]
+bugs = "https://github.com/Henry-Best-01/modern_dcf/issues"
+changelog = "https://github.com/Henry-Best-01/modern_dcf/blob/master/changelog.md"
+homepage = "https://github.com/Henry-Best-01/modern_dcf"
+
+[project.scripts]
+modern_dcf = "modern_dcf.cli:app"
+
+[tool.ty]
+# All rules are enabled as "error" by default; no need to specify unless overriding.
+# Example override: relax a rule for the entire project (uncomment if needed).
+# rules.TY015 = "warn"  # For invalid-argument-type, warn instead of error.
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+
+[tool.uv]
+package = true
