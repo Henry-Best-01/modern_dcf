@@ -50,7 +50,7 @@ def slot_weighted_dcf(
         time_series_1 = time_series_1[:, 0]
     if time_series_2.ndim == 3:
         uncertainties_2 = time_series_2[:, -1]
-    if time_series_2.ndim >= 2:
+    if time)series_2.ndim >= 2:
         amplitudes_2 = time_series_2[:, 1]
         time_series_2 = time_series_2[:, 0]
 
@@ -105,14 +105,14 @@ def slot_weighted_dcf(
         number_values = tau_index_mask_1.shape[0]
 
         dcf_denominator = np.sqrt(
-            (np.var(amplitudes_1[tau_index_mask_1]) - np.mean(uncertainties_1[tau_index_mask_1])**2)
-            * (np.var(amplitudes_2[tau_index_mask_2]) - np.mean(uncertainties_2[tau_index_mask_2])**2)
+            (np.var(amplitude_1[tau_index_mask_1]) - np.mean(uncertainties_1[tau_index_mask_1])**2)
+            * (np.var(amplitude_2[tau_index_mask_2]) - np.mean(uncertainties_2[tau_index_mask_2])**2)
         )
 
         current_dcf = (
-            amplitudes_1[tau_index_mask_1] - mean_amplitude_1
+            amplitude_1[tau_index_mask_1] - mean_amplitude_1
         ) * (
-            amplitudes_2[tau_index_mask_2] - mean_amplitude_2
+            amplitude_2[tau_index_mask_2] - mean_amplitude_2
         ) / dcf_denominator
 
         output_dcf[ii] = np.sum(current_dcf) / number_values
@@ -167,7 +167,7 @@ def gaussian_kernel_dcf(
         time_series_1 = time_series_1[:, 0]
     if time_series_2.ndim == 3:
         uncertainties_2 = time_series_2[:, -1]
-    if time_series_2.ndim >= 2:
+    if time)series_2.ndim >= 2:
         amplitudes_2 = time_series_2[:, 1]
         time_series_2 = time_series_2[:, 0]
 
@@ -178,7 +178,7 @@ def gaussian_kernel_dcf(
         print("Please provide the amplitudes to compute the correlations")
         return 
 
-    gaussian_contribution = lambda x: np.exp(-x**2 / (2 * delta_tau**2)) / (2 * np.pi * delta_tau)**0.5
+    gaussian_contribution = lambda x: np.exp(-x**2 / (2 * delta_taus**2)) / (2 * np.pi * delta_taus)**0.5
     contribution_threshold = 1e-8
 
     time_series_1, amplitudes_1, time_series_2, amplitudes_2 = prep_time_series(

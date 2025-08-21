@@ -55,3 +55,11 @@ select = [
 
 [tool.uv]
 package = true
+
+[tool.pytest.ini_options]
+pythonpath = [
+    ".", "src", "tests", "src/modern_dcf", "modern_dcf/src/modern_dcf/*"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
