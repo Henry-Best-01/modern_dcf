@@ -179,7 +179,7 @@ def gaussian_kernel_dcf(
         return 
 
     gaussian_contribution = lambda x: np.exp(-x**2 / (2 * delta_tau**2)) / (2 * np.pi * delta_tau)**0.5
-    contribution_threshold = 1e-8
+    contribution_threshold = gaussian_contribution(5 * delta_tau)
 
     time_series_1, amplitudes_1, time_series_2, amplitudes_2 = prep_time_series(
         time_series_1,
